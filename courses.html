@@ -1,0 +1,209 @@
+<html>
+<head>
+<link rel="shortcut icon" type="image" href="logo3.png">
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+
+<style>
+
+input[type=text] {
+  height:35
+}
+input[type=password] {
+  height:35
+}
+
+.div14 h1{
+color:black;
+font-family:"Veranda"
+}
+
+
+input[type=submit] {
+  height:30;
+  width:85
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:link {
+  color:black;
+}
+
+
+a:visited {
+  color: black;
+}
+
+
+a:hover {
+  color: rgb(77, 73, 73);
+}
+
+
+a:active {
+  color: voilet;
+}
+</style>
+
+</head>
+<body style=" margin:0; padding:0; box-sizing:border-box; ">
+<header>
+<nav class="navclass">
+<div>
+<img src="logo.png" alt="logo" height="500" width="100%"/>
+</div>
+</nav>
+</header>
+
+
+
+<div id="cont" style="box-shadow:2px 2px 2px 2px gray">
+</div>
+<br/>
+<br/>
+<br/>
+<h1 style="border-style:solid;border-width;text-align:center;">COURSES WE OFFER</h1>
+
+
+
+<div id="cards">
+</div>
+<div>
+<a href="C:\Users\Asus\Desktop\WEB tech project\buycourses.html" style="background-color:rgb(199, 199, 198);text-align:center;font-weight:bold;font-size:15;margin-left:570;border:1px solid black;border-radius:5px;padding:15">Liked any Course? Click here to Register for One.</a>
+</div>
+<br/>
+<br/>
+<br/>
+<footer>
+<div id="foot" style="background-color:rgb(199, 199, 198);border-radius:5px;padding:15px">
+<p>
+To know what our institution is up to,follow us on:<br>
+Instagram: @eduweb<br>
+Twitter: @eduweb<br>
+Facebook: @eduweb
+</p>
+<img src="icon.jpeg" height="50px" width="120px">
+</div>
+</footer>
+
+
+
+
+<script type="text/babel">
+
+class Tag extends React.Component{
+render(){
+var divstyle={textAlign:"center",height:20,width:216,padding:18,borderRight:"2px solid gray",backgroundColor:"rgb(199, 199, 198)",color:"white",display:"inline-block"}
+
+return(
+<div style={divstyle}>
+<a href={this.props.hrefs}>{this.props.name}</a>
+
+</div>
+);
+}
+}
+
+
+class Menu extends React.Component{
+render(){
+var divstyle={fontFamily:"Arial",height:45,width:10000,backgroundColor:"gray",color:"white",display:"inline-block"};
+return(
+<div style={divstyle}>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\home.html" name="Home"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\courses.html" name="Courses"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\coursepredictor.html" name="Course Predictor"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\ourpartners.html" name="Our partners"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\ourteam.html" name="About"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\logincopy.html" name="Logout"/>
+</div>
+);
+
+}
+
+
+}
+
+
+
+
+ReactDOM.render(<div><Menu /></div>,document.getElementById("cont"));
+
+</script>
+
+
+<script type="text/babel">
+class Square extends React.Component{
+render(){
+var squareStyle={textAlign:"center",fontSize:16,fontFamily:"Verdana"};
+return(
+<div style={squareStyle}>
+<h1>{this.props.name}</h1>
+</div>
+);
+}
+
+}
+
+class Label extends React.Component{
+render(){
+var labelstyle={fontFamily:"sans-serif",fontSize:15,padding:19,margin:5,textAlign:"center",color:"gray"};
+var divstyle={border:"solid 1px gray",borderRadius:"5px"};
+return(
+<div>
+
+<p style={labelstyle}>{this.props.content}<br/><br/>{this.props.section}<br/><br/>{this.props.rollno}<br/><br/>{this.props.phnno}</p>
+</div>
+);
+
+}
+
+}
+
+
+
+class Card extends React.Component{
+render(){
+var divstyle={height:415,width:345,margin:65,padding:30,borderRadius:"5px",boxShadow:"0px 0px 5px gray",display:"inline-block"};
+return(
+<div style={divstyle}>
+<br/>
+<Square name={this.props.name}/>
+<br/>
+
+
+<Label content={this.props.content} phnno={this.props.phnno} rollno={this.props.rollno} section={this.props.section}/>
+</div>
+
+
+
+);
+}
+
+
+}
+
+ReactDOM.render(
+<div>
+<Card name="Engineering Crash Course-1" content="Course ID: ED20ENG1" section="Duration:6 Months" rollno="Price:Rs 35000" phnno="Description: This course covers all the contents of Maths Physics and Chemistry of both 11th and 12th standards sufficient enough to crack JEE-MAINS and JEE-ADVANCED exams."/>
+<Card name="Engineering Crash Course-2" content="Course ID: ED20ENG2" section="Duration:6 Months" rollno="Price:Rs 33000" phnno="Description: This course covers all the contents of Maths Physics and Chemistry of 12th standard sufficient enough to crack JEE-MAINS's and JEE-ADVANCED's 12th standard portions."/>
+<Card name="Medical Crash Course-1" content="Course ID: ED20MED1" section="Duration:4 Months" rollno="Price:Rs 24000" phnno="Description: This course covers all the contents of Biology Physics and Chemistry of both 11th and 12th standards sufficient enough to crack NEET and AIIMS exams"/>
+<Card name="Medical Crash Course-2" content="Course ID: ED20MED2" section="Duration:4 Months" rollno="Price:Rs 26000" phnno="Description: This course covers all the contents of Biology Physics and Chemistry of 12th standard sufficient enough to crack NEET and AIIMS 12th standard portions."/>
+<Card name="UPSC Crash Course-1" content="Course ID: ED20UPS1" section="Duration:5 Months" rollno="Price:Rs 30000" phnno="Description: This course covers all the contents of History Geography Political-Science Economics and Sociology sufficient enough to crack UPSC exam."/>
+<Card name="UPSC Crash Course-2" content="Course ID: ED20UPS2" section="Duration:3 Months" rollno="Price:Rs 32500" phnno="Description: This course covers all the contents of History Geography Political-Science Economics and Sociology sufficient enough to crack UPSC exam but since the course duration is small no Revision and Doubts-classes will be conducted."/>
+
+
+</div>,document.getElementById("cards"));
+
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<html>
+<head>
+<link rel="shortcut icon" type="image" href="logo3.png">
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+
+<style>
+
+input[type=text] {
+  height:35
+}
+input[type=password] {
+  height:35
+}
+
+.div14 h1{
+color:black;
+font-family:"Veranda"
+}
+
+
+input[type=submit] {
+  height:30;
+  width:85
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:link {
+  color:black;
+}
+
+
+a:visited {
+  color: black;
+}
+
+
+a:hover {
+  color: rgb(77, 73, 73);
+}
+
+
+a:active {
+  color: voilet;
+}
+
+
+
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            object-fit: cover;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            min-width: 100%;
+            min-height: 100%;
+        }
+        
+        .bottom {
+            bottom: 0;
+            background: rgba(39, 39, 39, 0.5);
+            color: #f1f1f1;
+            width: 100%;
+            padding: 10px;
+            height: 200px;
+        }
+        
+        #div1 {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: #f3ecec;
+            height: 435px;
+            font-size: 20px;
+            padding: 20px;
+            width: 25%;
+            padding: 2px;
+            float: left;
+            margin: 20px;
+            font-variant: normal;
+            color: rgb(8, 5, 7);
+            font-style:italic;
+            border-style: dotted;
+            border-color: aqua;
+            
+        }
+        
+        #div2 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: rgb(8, 5, 7);
+            width: 30%;
+            height: 400px;
+            float: left;
+            margin: 30px;
+            font-size: 25px;
+            color: whitesmoke;
+            border-style: solid;
+            border-radius: 2px;
+        }
+        
+        #div3 {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: #f3ecec;
+            height: 400px;
+            font-size: 20px;
+            padding: 20px;
+            width: 25%;
+            float: right;
+            margin: 20px;
+            font-variant: normal;
+            color: rgb(8, 5, 7);
+            font-style:italic;
+            border-style: dotted;
+            border-color: aqua;
+            
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(182, 180, 180);
+            width: 40%;
+        }
+        
+        li {
+            float: left;
+        }
+        
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        li a:hover {
+            background-color: #111;
+        }
+        
+        #logoid {
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 200px;
+        }
+        
+        .mi {
+            bottom: 0;
+        }
+        body{
+          background-image: url("aakash.png");
+        }
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+</head>
+<body style=" margin:0; padding:0; box-sizing:border-box; ;
+<nav class="navclass">
+<div>
+<img src="logo.png" alt="logo" height="500" width="100%"/>
+</div>
+</nav>
+</header>
+
+
+
+<div id="cont" style="box-shadow:2px 2px 2px 2px gray">
+</div>
+<br/>
+<br/>
+<h1 style="text-align:center;font-weight:bold;font-size:40;color:white">HOME</h1>
+
+
+
+
+
+
+
+
+
+
+    <video autoplay muted loop id="myVideo">
+        
+      </video>
+
+<div>
+            <div id="div1">
+
+                <p>Edtech, a portmanteau of the phrase “education technology," is the combination of IT tools and educational practices aimed at facilitating and enhancing learning. Our guide will walk you through the current state of education technology
+                    and its bright future in the classroom.Edtech is the practice of introducing IT tools into the classroom to create a more engaging, inclusive and individualized learning experience.An influx of technology is opening up new avenues
+                    of learning for students of all ages, while also promoting collaboration and inclusivity in the classroom.</p>
+
+            </div>
+            <div id="div2">
+                <h1 style="text-align: center; font-style: italic; font-weight: bold;">Eduweb</h1>
+                <p>Established in 2018, Eduweb is a Delhi-based EdTech company that aims to provide quality education and counseling to all eligible students across the country. We at Edtech believe that education cousenselling for parents and students is
+                    as important education courses. Edtech also believes that evetyone should have access to qualilty education whether rich or poor.</p>
+            </div>
+            <div id="div3">
+                Today’s classrooms have moved beyond the clunky desktop computers that were once the norm and are now tech-infused with tablets, interactive online courses and even robots that can take notes and record lectures for students who are ill.Edtech tools make
+                it easier for teachers to create individualized lesson plans and learning experiences that foster a sense of inclusivity and boost the learning capabilities of all students, no matter their age or learning abilities.</div>
+
+</div>
+
+
+
+<br/>
+<br/>
+
+
+
+<br/>
+
+
+
+
+
+
+
+<script type="text/babel">
+alert("You have Logged in successfully...");
+class Tag extends React.Component{
+render(){
+var divstyle={textAlign:"center",height:20,width:216,padding:18,borderRight:"2px solid gray",backgroundColor:"rgb(199, 199, 198)",color:"white",display:"inline-block"}
+
+return(
+<div style={divstyle}>
+<a href={this.props.hrefs}>{this.props.name}</a>
+
+</div>
+);
+}
+}
+
+
+class Menu extends React.Component{
+render(){
+var divstyle={fontFamily:"Arial",height:45,width:10000,backgroundColor:"gray",color:"white",display:"inline-block"};
+return(
+<div style={divstyle}>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\home.html" name="Home"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\courses.html" name="Courses"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\coursepredictor.html" name="Course Predictor"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\ourpartners.html" name="Our partners"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\ourteam.html" name="About"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\logincopy.html" name="Logout"/>
+</div>
+);
+
+}
+
+
+}
+
+
+
+
+ReactDOM.render(<div><Menu /></div>,document.getElementById("cont"));
+
+</script>
+
+
+
+
+</body>
+</html>

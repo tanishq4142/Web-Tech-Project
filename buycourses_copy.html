@@ -1,0 +1,455 @@
+<html>
+<head>
+<link rel="shortcut icon" type="image" href="logo3.png">
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<script>
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+</script>
+
+<style>
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]{
+height:35;
+width:582
+
+}
+
+select{
+    height:35;
+    width:582
+}
+
+input[type=text] {
+  height:35
+}
+input[type=password] {
+  height:35
+}
+input[type=submit] {
+  height:35;
+width:65
+}
+.div14 h1{
+color:black;
+font-size:24;
+font-family:"Veranda"
+}
+
+input[type=submit] {
+  height:30;
+  width:85
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:link {
+  color: gray;
+}
+
+
+a:visited {
+  color: gray;
+}
+
+
+a:hover {
+  color: black;
+}
+
+
+a:active {
+  color: voilet;
+}
+</style>
+
+
+
+
+</head>
+
+<body style=" margin:0; padding:0; box-sizing:border-box">
+<header>
+<nav class="navclass">
+<div>
+<img src="logo.png" alt="logo" height="500" width="100%"/>
+</div>
+</nav>
+</header>
+
+
+
+<div id="cont" style="box-shadow:2px 2px 2px 2px gray">
+</div>
+<br/>
+<br/>
+
+<h1 style="text-align:center;font-weight:bold;font-size:35">PURCHASE COURSES</h1>
+
+
+
+
+<div id="cont">
+</div>
+
+<div id="cont2">
+</div>
+
+<br/>
+<footer>
+<div id="foot" style="background-color:rgb(199, 199, 198);border-radius:5px;padding:15px">
+<p>
+To know what our institution is up to,follow us on:<br>
+Instagram: @eduweb<br>
+Twitter: @eduweb<br>
+Facebook: @eduweb
+</p>
+<img src="icon.jpeg" height="50px" width="120px">
+</div>
+</footer>
+<script type="text/babel">
+
+class Register extends React.Component{
+constructor(props){
+super(props);
+this.state={
+coursename:"",
+courseid:"",
+courseprice:"",
+courseduration:"",
+username:"",
+card_num:0,
+card_name:"",
+card_cvv:"",
+card_expiry:"",
+color1:"gray"
+}
+}
+
+
+
+
+
+
+handleSubmit=(e)=>{
+
+
+e.preventDefault();
+var value1=document.getElementById("card_num").value;
+if(value1<1000000000000000 || value1>9999999999999999){
+alert("Enter correct Credit-Card Number..");
+}
+
+else{
+
+if(this.state.coursename!="" && this.state.courseid!="" && this.state.courseduration!="" && this.state.courseprice!="" && this.state.username!="" && this.state.card_num!="" && this.state.card_name!="" && this.state.card_cvv!="" && this.state.card_expiry!=""){
+
+
+let headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+   
+    headers.append('Origin','http://localhost:1026');
+
+
+const url = `http://localhost:1026/?type=purchase&coursename=${this.state.coursename}&courseid=${this.state.courseid}&courseduration=${this.state.courseduration}&courseprice=${this.state.courseprice}&username=${this.state.username}&card_num=${this.state.card_num}&card_name=${this.state.card_name}&card_expiry=${this.state.card_expiry}&card_cvv=${this.state.card_cvv}`;
+fetch(url, {
+    method : "POST",
+    body: new FormData(document.getElementById("inputForm")),
+    headers: headers,
+mode:'no-cors'
+}).then(
+    response => response.text()
+).then(
+    html => console.log(html)
+);
+alert("You have Registered Successfully,Please collect the Registration-Receipt at your nearest EDUWEB centre...");   
+location.href="C:\\Users\\Asus\\Desktop\\WEB tech project\\courses.html";
+
+
+
+
+}
+else{
+alert("Empty Feilds Are Not Allowed..");
+}
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+handleEvent=(event)=>{
+var name1=event.target.name;
+var value1=event.target.value;
+
+
+
+
+if(name1=="coursename"){
+    if(value1=="1"){
+        document.getElementById("courseid").value="ED20ENG1";
+        document.getElementById("courseduration").value="6 Months";
+        document.getElementById("courseprice").value="Rs 35000";
+        
+    }else if(value1=="2"){
+        document.getElementById("courseid").value="ED20ENG2";
+        document.getElementById("courseduration").value="6 Months";
+        document.getElementById("courseprice").value="Rs 33000";
+    }else if(value1=="3"){
+        document.getElementById("courseid").value="ED20MED1";
+        document.getElementById("courseduration").value="4 Months";
+        document.getElementById("courseprice").value="Rs 24000";
+    }else if(value1=="4"){
+        document.getElementById("courseid").value="ED20MED2";
+        document.getElementById("courseduration").value="4 Months";
+        document.getElementById("courseprice").value="Rs 26000";
+    }else if(value1=="5"){
+        document.getElementById("courseid").value="ED20UPS1";
+        document.getElementById("courseduration").value="5 Months";
+        document.getElementById("courseprice").value="Rs 30000";
+    }else if(value1=="6"){
+        document.getElementById("courseid").value="ED20UPS2";
+        document.getElementById("courseduration").value="3 Months";
+        document.getElementById("courseprice").value="Rs 32500";
+    }   
+
+
+
+
+
+}
+
+
+
+
+if(name1=="coursename"){
+    var valc=document.getElementById("coursename").value;
+    var namec="";
+	if(valc=="1"){
+	namec="Engineering Crash Course-1";
+	}else if(valc=="2"){
+	namec="Engineering Crash Course-2";
+	}else if(valc=="3"){
+	namec="Medical Crash Course-1";
+	}else if(valc=="4"){
+	namec="Medical Crash Course-2";
+	}else if(valc=="5"){
+	namec="UPSC Crash Course-1";
+	}else if(valc=="6"){
+	namec="UPSC Crash Course-2";
+	}
+	
+    var idc=document.getElementById("courseid").value;
+    var durationc=document.getElementById("courseduration").value;
+    var pricec=document.getElementById("courseprice").value;
+this.setState({"coursename":namec,"courseid":idc,"courseduration":durationc,"courseprice":pricec});
+}else if(name1=="username"){
+    this.setState({"username":value1});
+}else if(name1=="card_num"){
+    this.setState({"card_num":value1});
+}else if(name1=="card_name"){
+    this.setState({"card_name":value1});
+}else if(name1=="card_expiry"){
+    this.setState({"card_expiry":value1});
+}else if(name1=="card_cvv"){
+    this.setState({"card_cvv":value1});
+}
+
+
+
+
+console.log(this.state.courseprice);
+console.log(this.state.courseid);
+console.log(this.state.courseduration);
+console.log(this.state.coursename);
+console.log(this.state.username);
+console.log(this.state.card_num);
+console.log(this.state.card_name);
+console.log(this.state.card_expiry);
+console.log(this.state.card_cvv);
+}
+
+render(){
+var divstyle={padding:5,margin:10,width:40,marginLeft:455};
+var divstyle2={marginLeft:70};
+var divstyle3={marginLeft:725};
+var divstyle4={marginLeft:140};
+var divstyle8={display:"inline-block",padding:5,margin:10,width:40,marginLeft:455};
+var divstyle9={display:"inline-block",padding:5,margin:10,width:40,marginLeft:255};
+
+return (
+<div>
+<form id="inputForm">
+
+<div style={divstyle}>
+<label htmlFor="coursename1">
+<select name="coursename" id="coursename" onChange={this.handleEvent}>
+<option value="1">Engineering Crash Course-1</option>
+<option value="2">Engineering Crash Course-2</option>
+<option value="3">Medical Crash Course-1</option>
+<option value="4">Medical Crash Course-2</option>
+<option value="5">UPSC Crash Course-1</option>
+<option value="6">UPSC Crash Course-2</option>
+<option value="7" disabled selected hidden>Please Select a Course</option>
+</select>
+
+</label>
+</div>
+
+<div style={divstyle}>
+<label htmlFor="contact1">
+<input type="text" size="82" name="courseid" id="courseid" onChange={this.handleEvent} autoComplete="off" placeholder="Course ID" autoFocus required  disabled/>
+</label>
+</div>
+
+<div style={divstyle}>
+<label htmlFor="contact1">
+<input type="text" size="82" name="courseduration" id="courseduration" onChange={this.handleEvent} autoComplete="off" placeholder="Course Duration" autoFocus required disabled/>
+</label>
+</div>
+
+<div style={divstyle}>
+<label htmlFor="contact1">
+<input type="text" size="82" name="courseprice" id="courseprice" onChange={this.handleEvent} autoComplete="off" placeholder="Course Price" autoFocus required disabled/>
+</label>
+</div>
+
+
+<div style={divstyle}>
+<label htmlFor="username1">
+<input type="text" size="82" name="username" id="username" onChange={this.handleEvent} autoComplete="off" placeholder="Enter Username" autoFocus required/>
+</label>
+</div>
+
+<div style={divstyle}>
+<label htmlFor="password1">
+<input type="number" max="9999999999999999" min="1000000000000000" size="82" name="card_num" id="card_num" onChange={this.handleEvent} autoComplete="off" placeholder="Enter Your Credit-card Number" maxlength="16" autoFocus required />
+</label>
+</div>
+
+<div style={divstyle}>
+<label htmlFor="confirmpassword1">
+<input type="text" size="82" name="card_name" id="card_name" onChange={this.handleEvent} autoComplete="off" placeholder="Enter Name On Card" autoFocus required/>
+</label>
+</div>
+
+<div style={divstyle8}>
+<label htmlFor="confirmpassword1">
+<input type="text" size="35" name="card_expiry" id="card_expiry" onChange={this.handleEvent} autoComplete="off" placeholder="MM/YYYY" autoFocus required/>
+</label>
+</div>
+
+<div style={divstyle9}>
+<label htmlFor="confirmpassword1">
+<input type="text" size="35" maxlength="3" name="card_cvv" id="card_cvv" onChange={this.handleEvent} autoComplete="off" placeholder="Enter Card CVV" autoFocus required/>
+</label>
+</div>
+
+
+<br/>
+<div style={divstyle3}>
+<input type="submit" value="Register" id="sub" onClick={this.handleSubmit}></input>
+
+</div>
+
+</form>
+</div>
+);
+}
+
+
+}
+
+ReactDOM.render(<Register/>,document.getElementById("cont2"));
+
+</script>
+
+<script type="text/babel">
+class Tag extends React.Component{
+render(){
+var divstyle={textAlign:"center",height:20,width:268,padding:18,borderRight:"2px solid gray",backgroundColor:"rgb(199, 199, 198)",color:"white",display:"inline-block"}
+
+return(
+<div style={divstyle}>
+<a href={this.props.hrefs}>{this.props.name}</a>
+
+</div>
+);
+}
+}
+
+
+class Menu extends React.Component{
+render(){
+var divstyle={fontFamily:"Arial",height:45,width:10000,backgroundColor:"gray",color:"white",display:"inline-block"};
+return(
+<div style={divstyle}>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\home.html" name="Home"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\courses.html" name="Courses"/>
+<Tag hrefs="/" name="Course Predictor"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\ourpartners.html" name="Our partners"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\ourteam.html" name="About"/>
+</div>
+);
+
+}
+
+
+}
+
+
+
+
+ReactDOM.render(<div><Menu/></div>,document.getElementById("cont"));
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

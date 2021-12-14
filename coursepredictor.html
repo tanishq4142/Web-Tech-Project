@@ -1,0 +1,318 @@
+<html>
+<head>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display:ital,wght@1,500|Merriweather:ital,wght@1,300|Spectral:wght@800' rel='stylesheet'>
+  <style>
+    h1{
+      background-color:#fcc200;
+      border:4px solid;
+      color:black;
+      font-family:'Merriweather';
+      box-shadow:5px 10px;
+      border-color:rgb(51,71,86);
+    }
+    #head{
+      background-color:#ffcc33;
+      border-bottom:4px solid;
+      border-right:4px solid;
+      color:black;
+      padding:5px;
+      margin-top:-5px;
+      margin-left:25px;
+      border-radius: 20px 0px;
+      font-family:'Playfair Display';
+      border-color:rgb(51,71,86);
+    }
+    #foot{
+      background-color:rgb(199, 199, 198);
+      border-top:3px solid;
+      padding:15px
+    }
+    p#select{
+      font-family:"Spectral";
+      font-size:120%;
+    }
+    option{
+      font-family:"Spectral";
+      font-size:120%;
+    }
+    select{
+      background-color:#ffd300;
+      width:200px;
+      height:30px;
+      box-shadow:5px 10px;
+    }
+    input{
+      background-color:#ffd300;
+      width:200px;
+      height:30px;
+      box-shadow:5px 10px;
+    }
+    #result{
+      font-family:"Spectral";
+      border:5px solid black;
+      margin:15px;
+    }
+    #college{
+      border-bottom:2px solid black;
+    }
+    button:hover{
+      color:white;
+    }
+  </style>
+</head>
+<body style=" margin:0; padding:0; box-sizing:border-box; background-color:beige;">
+  <header>
+    <nav class="navclass">
+      <div>
+        <img src="logo.png" alt="logo" height="500" width="100%"/>
+      </div>
+    </nav>
+    <div id="cont" style="box-shadow:2px 2px 2px 2px gray">
+    </div>
+  </header>
+  <div style="background-color:beige;">
+    <h1>College Predictor</h1>
+    <p id="head"><i>Predict admission chances into your dream colleges based on the exams you have taken</i></p>
+  </div>
+  <div id="root">
+  </div>
+  <footer>
+    <div id="foot">
+      <p id="about">
+        To know what our institution is up to,follow us on:<br>
+        Instagram: @eduweb<br>
+        Twitter: @eduweb<br>
+        Facebook: @eduweb
+      </p>
+    </div>
+  </footer>
+  <script type="text/babel">
+ 
+class Tag extends React.Component{
+render(){
+var divstyle={textAlign:"center",height:20,width:216,padding:18,borderRight:"2px solid gray",backgroundColor:"rgb(199, 199, 198)",color:"white",display:"inline-block"}
+
+return(
+<div style={divstyle}>
+<a href={this.props.hrefs}>{this.props.name}</a>
+
+</div>
+);
+}
+}
+
+
+class Menu extends React.Component{
+render(){
+var divstyle={fontFamily:"Arial",height:45,width:10000,backgroundColor:"gray",color:"white",display:"inline-block"};
+return(
+<div style={divstyle}>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\home.html" name="Home"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\courses.html" name="Courses"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\coursepredictor.html" name="Course Predictor"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\ourpartners.html" name="Our partners"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\ourteam.html" name="About"/>
+<Tag hrefs="C:\Users\Asus\Desktop\WEB tech project\logincopy.html" name="Logout"/>
+</div>
+);
+
+}
+
+
+}
+
+
+
+
+ReactDOM.render(<div><Menu/></div>,document.getElementById("cont"));
+
+  class Streams extends React.Component{
+    constructor(props){
+      super(props);
+      this.state={
+        stream:""
+      };
+      this.selectStream=this.selectStream.bind(this);
+    }
+    selectStream(e){
+      let val=e.target.value;
+      this.setState(()=>{
+        return {stream:val};
+      })
+      e.preventDefault();
+    }
+    render(){
+      var divstyle={textAlign:"center",width:"100%",backgroundColor:"beige"};
+      return(
+        <div style={divstyle}>
+          <p id="select">Select stream:</p>
+          <select id="streams" name="streams" onChange={e=>this.selectStream(e)} required>
+            <option value="" selected hidden>-Select stream-</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Medical">Medical</option>
+            <option value="Management">Management</option>
+            <option value="Design">Design</option>
+          </select>
+          <br/>
+          <Courses stream={this.state.stream}/>
+        </div>
+      );
+    }
+  }
+
+  class Courses extends React.Component{
+    constructor(props){
+      super(props);
+      this.state={
+        course:""
+      };
+      this.selectCourse=this.selectCourse.bind(this);
+    }
+    selectCourse(e){
+      let val=e.target.value;
+      this.setState(()=>{
+        return {course:val};
+      })
+      e.preventDefault();
+    }
+    createCourse(course){
+      if(course=="Undefined")
+        return (<option value="" name="hidden" hidden>-Select course-</option>);
+      else
+        return (<option value={course}>{course}</option>);
+    }
+    render(){
+      var divstyle={textAlign:"center",height:"130%",width:"100%",backgroundColor:"beige"};
+      const streams_courses={Engineering:["CSE","ECE","EEE","Mech"],Medical:["MBBS","BDS","BAMS","BHMS"],Management:["BBA","BHM","BBM","BCom"],Design:["Fashion Design","Graphic Design","Industrial Design"]};
+      var courselist=streams_courses[this.props.stream];
+      if(courselist==undefined)
+        courselist=["Undefined"];
+      var List=courselist.map(this.createCourse);
+      return(
+        <div style={divstyle}>
+          <p id="select">Select course:</p>
+          <select id="courses" name="courses" onChange={e=>this.selectCourse(e)} required>
+            <option value="" selected hidden>-Select course-</option>
+            {List}
+          </select>
+          <Exams stream={this.props.stream} course={this.state.course}/>
+        </div>
+      )
+    }
+  }
+  class Exams extends React.Component{
+    constructor(props){
+      super(props);
+      this.state={
+        exam:""
+      }
+      this.selectExam=this.selectExam.bind(this);
+    }
+    selectExam(e){
+      let val=e.target.value;
+      this.setState(()=>{
+        return {exam:val};
+      })
+      e.preventDefault();
+    }
+    createExam(exam){
+      if(exam=="Undefined")
+        return (<option value="" name="hidden" hidden>-Select exam-</option>);
+      else
+        return (<option value={exam}>{exam}</option>);
+    }
+    render(){
+      var divstyle={textAlign:"center",height:50,width:"100%",backgroundColor:"beige"};
+      var btnStyle={height:50,width:150,margin:"25px",backgroundColor:"rgb(199, 199, 198)",color:"black"};
+      const streams_exams={Engineering:["JEE Mains","JEE Advanced","KCET","COMED-K"],Medical:["NEET"],Management:["AIMA-UGAT","NMIMS-NPAT"],Design:["NIFT","NID-DAT","UCEED"]};
+      var examlist=streams_exams[this.props.stream];
+      if(examlist==undefined)
+        examlist=["Undefined"];
+      var List=examlist.map(this.createExam);
+      return(
+        <div style={divstyle}>
+          <p id="select">Select exam:</p>
+          <select id="exams" name="exams" onClick={e=>this.selectExam(e)} required>   //can include select exam option
+            <option value="" selected hidden>-Select exam-</option>
+            {List}
+          </select>
+          <Rank exam={this.state.exam} course={this.props.course} stream={this.props.stream}/>
+        </div>);
+      }
+  }
+  class Rank extends React.Component{
+    constructor(props){
+      super(props);
+      this.state = {
+        rank:"",
+        data : []
+      }
+      this.handleSubmit=this.handleSubmit.bind(this);
+    }
+    handleSubmit(e){
+      var rank_d=parseInt(this._inputElement.value);
+      this._inputElement.value="";
+      var stream_d=this.props.stream;
+      var course_d=this.props.course;
+      var exam_d=this.props.exam;
+
+      if(stream_d!="" && course_d!="" && exam_d!="" && rank_d!="")
+      {
+        const url=`http://localhost:3000/?type=findCollege&stream=${stream_d}&course=${course_d}&exam=${exam_d}&rank=${rank_d}`;
+        console.log(url)
+
+        fetch(url,{
+          method:"GET",
+          headers: {
+            'Accept': 'application/json',
+          }
+        }).then(function(response){
+            console.log(response)
+             if(response.status==200){
+               alert("Congratulations! Find the list of colleges below!");
+   	           console.log("Congrats! Colleges found.");
+   	           return response.json();
+   	           }
+   	        else if(response.status==402){
+               alert("Sorry, no college found.")
+   	           console.log("Sorry, no college found for your rank.");
+   	           return response.json();
+   	        }
+            else{
+              console.log("An error occurred.")
+              return response.json();
+            }
+          }).then((data)=>{
+          this.setState({data: data});
+          })
+      }
+      else{
+        alert("All fields are not selected.");
+      }
+      e.preventDefault();
+    }
+    render(){
+      var btnStyle={height:50,width:140,margin:"25px",backgroundColor:"#202020",color:"gold",fontFamily:"Spectral",boxShadow:"10px 10px 8px #ffcc33",borderRadius:"8px",fontSize:"110%"};
+      return(
+        <div>
+          <form style={{textAlign:"center",width:"100%",backgroundColor:"beige"}} onSubmit={e=>this.handleSubmit(e)}>
+            <label><p id="select">Enter rank in exam:</p>
+              <input type="text" placeholder="ex: 900" ref={(a) => this._inputElement = a}/>
+            </label><br/>
+            <button type="submit" style={btnStyle}>Submit</button>
+          </form><br/>
+          <div id="result">
+            {this.state.data.map(result => <p id="college"><b>{result.College}</b></p>)}
+          </div>
+        </div>
+      )
+    }
+  }
+  ReactDOM.render(<div><Menu/></div>,document.getElementById("cont"));
+  ReactDOM.render(<div><Streams/></div>,document.getElementById("root"));
+  </script>
+</body>
+</html>

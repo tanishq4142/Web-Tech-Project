@@ -1,0 +1,215 @@
+<html>
+<head>
+<title>Login Page</title>
+<link rel="shortcut icon" type="image" href="logo3.png">
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<style>
+
+input[type=text] {
+  height:35
+}
+input[type=password] {
+  height:38
+}
+input[type=submit] {
+  height:30;
+  width:85
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:link {
+  color: gray;
+}
+
+
+a:visited {
+  color: gray;
+}
+
+
+a:hover {
+  color: black;
+}
+
+
+a:active {
+  color: voilet;
+}
+</style>
+
+
+</head>
+
+<body style="background-color:rgb(24, 23, 23)">
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<br/>
+<br/>
+<br/>
+<div style="width:1350;display:inline;margin-left:45">
+<img src="logo2.png" alt="logo" height="250" width="55%" style="box-shadow:1px 1px 2px 2px grey;border-radius:5px" />
+</div>
+
+<div id="cont" style="padding:20;height:295;width:375;border-Radius:5px;background-Color:white;float:right;margin-right:80;margin-top:-35;box-shadow:1px 1px 2px 2px grey"></div>
+
+
+<script type="text/babel">
+alert("You haven't Registered, Please register first...");
+class Register extends React.Component{
+constructor(props){
+super(props);
+this.state={
+name:"",
+contact:"",
+age:"",
+email:"",
+username:"",
+password:"", 
+confirmpassword:""
+}
+}
+
+handleEvent=(event)=>{
+var name1=event.target.name;
+var value1=event.target.value;
+
+if(name1=="username"){
+this.setState({username:value1});
+}else if(name1=="password"){
+this.setState({password:value1});
+}
+
+
+
+}
+
+
+
+
+
+handleSubmit=(e)=>{
+
+console.log(this.state.username);
+console.log(this.state.password);
+
+e.preventDefault();
+
+var user1=this.state.username;
+var pass1=this.state.password;
+if(user1!="" && pass1!=""){
+
+
+
+
+
+let headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+   
+    headers.append('Origin','http://localhost:1026/');
+
+
+const url = `http://localhost:1027/?type=login&username=${this.state.username}&password=${this.state.password}`;
+fetch(url, {
+    method : "POST",
+  body: new FormData(document.getElementById("inputForm")),
+    headers: headers,
+    mode:'no-cors'
+}).then(
+    function(response){
+	response.text();
+} 
+   
+).then(setTimeout(()=>{window.close();},700)).then(html=>console.log(html)).catch(function(error){
+console.log(error.message);
+});
+
+
+
+
+
+
+
+
+}else{
+alert("Empty Fields are Not Allowed..");
+}
+   
+
+
+
+}
+
+
+
+render(){
+var divstyle={padding:5,margin:15,width:40,marginLeft:20};
+var divstyle2={marginLeft:125};
+var divstyle3={marginLeft:135};
+var divstyle4={marginLeft:100};
+return (
+<div>
+<form id="inputForm">
+<div style={divstyle2}>
+<h1>LOGIN</h1>
+</div>
+
+<div style={divstyle}>
+<label htmlFor="username1">
+<input type="text" size="42" name="username" id="username" onChange={this.handleEvent} autoComplete="off" placeholder="Enter Username"/>
+</label>
+</div>
+
+<div style={divstyle}>
+<label htmlFor="password1">
+<input type="password" size="42" name="password" id="password" onChange={this.handleEvent} autoComplete="off" placeholder="Enter password"/>
+</label>
+</div>
+
+<br/>
+<div style={divstyle3}>
+<input type="submit" value="Login" id="sub" onClick={this.handleSubmit}></input>
+</div>
+
+<div style={divstyle4}>
+<br/>
+<a href="C:\Users\Asus\Desktop\WEB tech project\myregister.html">Haven't Registered yet?</a>
+</div>
+
+
+</form>
+</div>
+);
+}
+
+
+}
+
+ReactDOM.render(<Register/>,document.getElementById("cont"));
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

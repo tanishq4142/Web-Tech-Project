@@ -1,0 +1,61 @@
+<html>
+<head>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<style>
+
+</style>
+
+</head>
+<body>
+<div id="cards">
+</div>
+<script type="text/babel">
+class Square extends React.Component{
+render(){
+var squareStyle={height:150,backgroundColor:"gray"};
+return(
+<div style={squareStyle}></div>
+);
+}
+
+}
+
+class Label extends React.Component{
+render(){
+var labelstyle={fontFamily:"sans-serif",fontSize:10,padding:15,margin:5};
+return(
+<p style={labelstyle}>{this.props.content}</p>
+);
+
+}
+
+}
+
+
+
+class Card extends React.Component{
+render(){
+var divstyle={height:200,width:150,padding:10,borderRadius:"5px",boxShadow:"0px 0px 5px gray"};
+return(
+<div style={divstyle}>
+<Square/>
+<Label content="heyheyeheyehey"/>
+</div>
+
+
+
+);
+}
+
+
+}
+
+ReactDOM.render(<Card/>,document.getElementById("cards"));
+
+
+</script>
+</body>
+</html>
